@@ -5,7 +5,6 @@ import authController from '../controller/auth-controller';
 const upload = multer();
 export const loginRoutes = express.Router();
 
-loginRoutes.get('', authController.showHomepage);
 loginRoutes.get('/login', authController.showLoginForm);
 loginRoutes.post('/login', upload.none(), authController.login);
 loginRoutes.get('/signUp', authController.showSignUp);

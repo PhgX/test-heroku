@@ -6,11 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const login_router_1 = require("./src/routes/login.router");
-const PORT = 3300;
+const PORT = process.env.PORT || 3000;
 const app = (0, express_1.default)();
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
-const DB_URL = "mongodb://localhost:27017/Product_Management";
+app.use(express_1.default.json());
+const DB_URL = "mongodb+srv://PhgX:BzfS6pSUDb-G8K8@cluster0.nhnbl8o.mongodb.net/?retryWrites=true&w=majority/test";
 mongoose_1.default.connect(DB_URL)
     .then(() => { console.log('DB Connected'); })
     .catch((err) => {

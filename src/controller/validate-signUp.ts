@@ -1,12 +1,14 @@
 import { User } from "../schema/user.model";
 
 class Validate {
-  ValidateUserName = async (username: string) => {
-    let user = await User.findOne({ username: username });
-    if (!user) {
-      return true;
+  ValidateUserName = async (Username: string) => {
+    let value = await User.findOne({ username: Username });
+    console.log('User = ', Username)
+    console.log('username = ', value);
+    if(value == null) {
+      return true
     } else {
-      return false;
+      return false
     }
   }
 
@@ -15,7 +17,7 @@ class Validate {
     let regExPassword = new RegExp(
       /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,20}$/
     );
-    if (password.match(regExPassword) ) {
+    if (password.match(regExPassword)) {
       return true;
     } else {
       return false;
@@ -23,20 +25,20 @@ class Validate {
   };
 
   passwordMatch = (password: string, repassword: string) => {
-    if(password === repassword) {
-      return true;
-    } else { 
-      return false;
-    }
-  }
-
-  checkEmail = async (email: string) => {
-    let checkEmail = await User.find({ email: email });
-    if (!checkEmail) {
+    if (password === repassword) {
       return true;
     } else {
       return false;
     }
+  }
+
+  checkEmail = async (Email: string) => {
+    let value = await User.findOne({email: Email});
+   if(value == null) {
+    return true;
+   } else {
+    return false;
+   }
   }
 
   ValidateEmail = (email: string) => {
